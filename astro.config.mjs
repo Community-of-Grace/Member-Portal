@@ -5,7 +5,6 @@ import clerk from "@clerk/astro";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import react from "@astrojs/react";
 // import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
