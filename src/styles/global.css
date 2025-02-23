@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Signika&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Signika&display=swap");
 @import "tailwindcss";
-
 
 @theme {
   /* BREAKPOINTS */
@@ -50,6 +49,8 @@
   --color-cog-blue-700: #19385b;
 }
 
-.cl-userButton-root, .cl-avatarImage, .cl-avatarBox{
-  @apply size-12 xs:size-14 md:size-16
+.cl-userButton-root,
+.cl-avatarImage,
+.cl-avatarBox {
+  @apply xs:size-14 size-12 md:size-16;
 }

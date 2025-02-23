@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import clerk from "@clerk/astro";
 // import node from "@astrojs/node";
 import vercel from "@astrojs/vercel";
@@ -14,10 +14,8 @@ export default defineConfig({
   adapter: vercel(),
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });
-
-
 
 // Clerk Config
