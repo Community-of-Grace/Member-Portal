@@ -8,6 +8,8 @@ import {
 import { Icon } from "astro-icon/components";
 import "./src/styles/global.css";
 
+import CardGalleryItem from "../components/card_gallery_item.astro";
+
 const { title } = Astro.props;
 ---
 
@@ -21,31 +23,31 @@ const { title } = Astro.props;
     <title>Astro Basics</title>
   </head>
   <body>
-    <header class="flex items-center p-2.5 gap-2">
+    <header class="flex items-center gap-2 p-2.5">
       <div class="flex flex-row items-center gap-1">
         <img
           alt="Community of Grace Logo"
           src="/src/assets/cog_logo.svg"
-          class="hidden 2xs:inline size-12 sm:size-16"
+          class="2xs:inline hidden size-12 sm:size-16"
         />
-        <h1 class="text-2xl sm:text-3xl font-display text-black flex-1/4">
+        <h1 class="font-display flex-1/4 text-2xl text-black sm:text-3xl">
           Member Portal
         </h1>
       </div>
-      <nav class="flex-3/4 flex flex-row items-center justify-between gap-1">
-        <menu class="items-center justify-center flex flex-5">
+      <nav class="flex flex-3/4 flex-row items-center justify-between gap-1">
+        <menu class="flex flex-5 items-center justify-center">
           <li>
             <a
-              class="text-xl sm:text-2xl font-display self-center items-center justify-center"
+              class="font-display items-center justify-center self-center text-xl sm:text-2xl"
               href="https://transformlives.org"
             >
-              <span class="xs:hidden inline-block hover:underline text-left"
+              <span class="xs:hidden inline-block text-left hover:underline"
                 >CoG Homepage<Icon
                   class="inline-block"
                   name="mdi:external-link"
                 />
               </span>
-              <span class="xs:inline-block hidden hover:underline text-left"
+              <span class="xs:inline-block hidden text-left hover:underline"
                 >Return to CoG Homepage <Icon
                   class="inline-block"
                   name="mdi:external-link"
@@ -56,12 +58,12 @@ const { title } = Astro.props;
         </menu>
         <div
           id="auth_buttons"
-          class="h-full flex-2 flex flex-col items-end justify-center"
+          class="flex h-full flex-2 flex-col items-end justify-center"
         >
           <SignedOut>
             <SignInButton
               mode="modal"
-              class="text-white bg-cog-burgundy-400 hover:bg-cog-burgundy-500 focus:ring-4 focus:ring-cog-burgundy-200 font-display rounded-lg text-xl px-5 py-2.5"
+              class="bg-cog-burgundy-400 hover:bg-cog-burgundy-500 focus:ring-cog-burgundy-200 font-display rounded-lg px-5 py-2.5 text-xl text-white focus:ring-4"
             />
           </SignedOut>
           <SignedIn class="flex justify-center">
@@ -72,10 +74,67 @@ const { title } = Astro.props;
     </header>
     <SignedIn>
       <div
-        class="bg-gradient-to-tr from-cog-burgundy-100 to-cog-burgundy-500 h-3/7"
+        class="from-cog-burgundy-100 to-cog-burgundy-500 flex h-3/7 flex-col items-center justify-center gap-2 bg-gradient-to-tr text-white"
       >
-      Welcome User!
+        <h2 class="font-display text-6xl font-extrabold">Welcome User!</h2>
+        <p class="text-xl italic">You are successfully logged in!</p>
       </div>
+    </SignedIn>
+    <SignedOut>
+      <div
+        class="from-cog-burgundy-100 to-cog-burgundy-500 flex h-3/7 flex-col items-center justify-center gap-2 bg-gradient-to-tr px-30 text-center text-white"
+      >
+        <h2 class="font-display text-6xl font-extrabold">
+          Member Portal is only availble to signed in users.
+        </h2>
+        <p class="text-xl italic">
+          Accounts available only to Community of Grace registered members. <br
+          />
+          If you believe you should have an account, but don't; or are unable to
+          login, please contact us using the help form below.
+        </p>
+      </div>
+    </SignedOut>
+
+    <SignedIn>
+      <ul class="flex flex-row flex-wrap justify-center p-4">
+        <li>
+          <a
+            href="#"
+            class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-100 md:max-w-xl md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <img
+              class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+              src="/src/assets/baptismal_font.jpg"
+              alt=""
+            />
+            <div class="flex flex-col justify-between p-4 leading-normal">
+              <h2
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                Membership Directory
+              </h2>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                Listing of Community of Grace members and member information.
+                Includes pictures, phone numbers, and emails.
+              </p>
+            </div>
+          </a>
+        </li>
+        <CardGalleryItem
+          imagePath="/src/assets/notepad_pad_paper_yellow.jpg"
+          altText="Whatever"
+          linkTo="/protected/test_download.pdf"
+        >
+          <span slot="card_title"
+            >Recent Council Minutes & Financial Reports</span
+          >
+          <span slot="card_description">
+            Approved Council Minutes <br />
+            Approved Financial Reports
+          </span>
+        </CardGalleryItem>
+      </ul>
     </SignedIn>
   </body>
 </html>

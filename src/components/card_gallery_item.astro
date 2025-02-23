@@ -1,0 +1,40 @@
+---
+import "./src/styles/global.css";
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+   imagePath: string;
+   altText: string;
+   linkTo: string,
+}
+
+const { imagePath = "", altText = "", linkTo = "#"} = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+---
+
+<li>
+  <a
+    href={linkTo}
+    class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+  >
+    <Image
+      class="object-cover w-full rounded-t-lg size-96 md:size-48 md:rounded-none md:rounded-s-lg"
+      ,
+      src={images[imagePath]()}
+      ,
+      alt={altText}
+    />
+    <div class="flex flex-col justify-between p-4 leading-normal">
+      <h2
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      >
+        <slot name="card_title" />
+      </h2>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <slot name="card_description"><span> </span> </slot>
+      </p>
+    </div></a
+  >
+</li>
