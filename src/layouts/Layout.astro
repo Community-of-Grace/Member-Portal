@@ -4,7 +4,10 @@ import {
   SignedOut,
   UserButton,
   SignInButton,
+  Icon,
 } from "@clerk/astro/components";
+
+import "./src/styles/global.css";
 
 const { title } = Astro.props;
 ---
@@ -19,15 +22,28 @@ const { title } = Astro.props;
     <title>Astro Basics</title>
   </head>
   <body>
-    <header>
-      <h1>Member Portal</h1>
-      <nav>
+    <header class="flex items-center p-2.5">
+      <h1 class="text-3xl font-display text-black flex-1/4">Member Portal</h1>
+      <nav class="flex-3/4 flex flex-row justify-around">
+        <div id="site_nav">
+          <menu>
+            <li>
+              <a class="text-2xl font-display row-auto" href="https://transformlives.org">Return to CoG Homepage
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width={1.5} stroke="currentColor" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </li>
+          </menu>
+        </div>
+        <div id="auth_buttons" class="h-full">
         <SignedOut>
-          <SignInButton mode="modal" />
+          <SignInButton mode="modal" class="text-white bg-cog-burgundy-400 hover:bg-cog-burgundy-500 focus:ring-4 focus:ring-cog-burgundy-200 font-display rounded-lg text-xl px-5 py-2.5 me-2 mb-2"/>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <UserButton/>
         </SignedIn>
+        </div>
       </nav>
     </header>
   </body>
