@@ -9,7 +9,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [clerk(), icon(), react()],
+  integrations: [clerk(), icon()],
   adapter: vercel(),
 
   vite: {
