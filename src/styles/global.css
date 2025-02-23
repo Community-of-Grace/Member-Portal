@@ -3,6 +3,10 @@
 
 
 @theme {
+  /* BREAKPOINTS */
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xs: 19rem;
+
   /* FONTS */
   --font-display: "Signika", sans-serif;
   --font-sans: "Noto-Sans", sans-serif;
@@ -47,5 +51,5 @@
 }
 
 .cl-userButton-root, .cl-avatarImage, .cl-avatarBox{
-  @apply size-14 sm:size-10
+  @apply size-12 xs:size-14 md:size-16
 }

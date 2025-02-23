@@ -4,9 +4,8 @@ import {
   SignedOut,
   UserButton,
   SignInButton,
-  Icon,
 } from "@clerk/astro/components";
-
+import { Icon } from "astro-icon/components";
 import "./src/styles/global.css";
 
 const { title } = Astro.props;
@@ -22,30 +21,62 @@ const { title } = Astro.props;
     <title>Astro Basics</title>
   </head>
   <body>
-    <header class="flex items-center p-2.5">
-      <h1 class="text-3xl font-display text-black flex-1/4">Member Portal</h1>
-      <nav class="flex-3/4 flex flex-row justify-around">
-        <div id="site_nav">
-          <menu>
-            <li>
-              <a class="text-2xl font-display row-auto" href="https://transformlives.org">Return to CoG Homepage
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width={1.5} stroke="currentColor" class="size-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
+    <header class="flex items-center p-2.5 gap-2">
+      <div class="flex flex-row items-center gap-1">
+        <img
+          alt="Community of Grace Logo"
+          src="/src/assets/cog_logo.svg"
+          class="hidden 2xs:inline size-12 sm:size-16"
+        />
+        <h1 class="text-2xl sm:text-3xl font-display text-black flex-1/4">
+          Member Portal
+        </h1>
+      </div>
+      <nav class="flex-3/4 flex flex-row items-center justify-between gap-1">
+        <menu class="items-center justify-center flex flex-5">
+          <li>
+            <a
+              class="text-xl sm:text-2xl font-display self-center items-center justify-center"
+              href="https://transformlives.org"
+            >
+              <span class="xs:hidden inline-block hover:underline text-left"
+                >CoG Homepage<Icon
+                  class="inline-block"
+                  name="mdi:external-link"
+                />
+              </span>
+              <span class="xs:inline-block hidden hover:underline text-left"
+                >Return to CoG Homepage <Icon
+                  class="inline-block"
+                  name="mdi:external-link"
+                />
+              </span>
             </a>
           </li>
-          </menu>
-        </div>
-        <div id="auth_buttons" class="h-full">
-        <SignedOut>
-          <SignInButton mode="modal" class="text-white bg-cog-burgundy-400 hover:bg-cog-burgundy-500 focus:ring-4 focus:ring-cog-burgundy-200 font-display rounded-lg text-xl px-5 py-2.5 me-2 mb-2"/>
-        </SignedOut>
-        <SignedIn>
-          <UserButton/>
-        </SignedIn>
+        </menu>
+        <div
+          id="auth_buttons"
+          class="h-full flex-2 flex flex-col items-end justify-center"
+        >
+          <SignedOut>
+            <SignInButton
+              mode="modal"
+              class="text-white bg-cog-burgundy-400 hover:bg-cog-burgundy-500 focus:ring-4 focus:ring-cog-burgundy-200 font-display rounded-lg text-xl px-5 py-2.5"
+            />
+          </SignedOut>
+          <SignedIn class="flex justify-center">
+            <UserButton />
+          </SignedIn>
         </div>
       </nav>
     </header>
+    <SignedIn>
+      <div
+        class="bg-gradient-to-tr from-cog-burgundy-100 to-cog-burgundy-500 h-3/7"
+      >
+      Welcome User!
+      </div>
+    </SignedIn>
   </body>
 </html>
 
