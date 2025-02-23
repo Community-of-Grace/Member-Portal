@@ -20,26 +20,27 @@ if (!images[imagePath])
 ---
 
 <li>
-  <a
-    href={linkTo}
-    class="flex flex-col items-center rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-100 md:max-w-xl md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-  >
-    <Image
-      class="size-96 w-full rounded-t-lg object-cover md:size-48 md:rounded-none md:rounded-s-lg"
-      ,
-      src={images[imagePath]()}
-      ,
-      alt={altText}
-    />
-    <div class="flex flex-col justify-between p-4 leading-normal">
-      <h2
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-      >
-        <slot name="card_title" />
-      </h2>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        <slot name="card_description"><span> </span> </slot>
-      </p>
+  <a href={linkTo} class="">
+    <div
+      class="flex flex-col items-stretch rounded-lg border border-gray-200 bg-white shadow-sm hover:bg-gray-100 md:max-w-xl md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+    >
+      <Image
+        class="size-90 w-full rounded-t-lg object-cover md:size-48 md:rounded-none md:rounded-s-lg"
+        ,
+        src={images[imagePath]()}
+        ,
+        alt={altText}
+      />
+      <div class="m-5 flex flex-col gap-1 leading-normal">
+        <h2
+          class="mb-2 place-self-start text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          <slot name="card_title" />
+        </h2>
+        <p class="font-normal text-gray-700 dark:text-gray-400">
+          <slot name="card_description" />
+        </p>
+      </div>
     </div></a
   >
 </li>
